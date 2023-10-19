@@ -5,6 +5,9 @@
 <@common.page>
     <div>
         <@logout.logout/>
+        <span>
+            <a href="/user">User List</a>
+        </span>
     </div>
     <div>
         <form method="post">
@@ -16,7 +19,7 @@
     </div>
     <div>List of messages</div>
     <form method="get" action="/main">
-        <input type="text" name="filter" value="${filter}">
+        <input type="text" name="filter" value="${filter?ifExists}">
         <button type="submit">Search</button>
     </form>
     <#list messages as message>
