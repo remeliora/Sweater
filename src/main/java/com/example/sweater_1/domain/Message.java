@@ -1,13 +1,18 @@
 package com.example.sweater_1.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 public class Message {
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
     private Long id;
+    @NotBlank(message = "Please fill the message")
+    @Length(max = 2048, message = "Message too long (more then 2kB)")
     private String text;
+    @Length(max = 255, message = "Message too long (more then 2kB)")
     private String tag;
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "user_id")
